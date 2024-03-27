@@ -11,8 +11,7 @@ import SwiftUI
 struct DFitsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-            //initial commit
+            WelcomeView()
         }
     }
 }

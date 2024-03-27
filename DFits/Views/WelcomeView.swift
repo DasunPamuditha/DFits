@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  WelcomeView.swift
 //  DFits
 //
 //  Created by Dasun Pamuditha on 2024-03-24.
@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct WelcomeView: View {
     var body: some View {
-        
-        
-        NavigationStack
-        {
+        NavigationStack{
+            
             ZStack {
                 Color.color
                     .ignoresSafeArea()
@@ -28,14 +26,14 @@ struct ContentView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding(10)
-                    NavigationLink("Click Here", destination: DashboardView())
+                    NavigationLink("Explore Products", destination: DashboardView())
                 }
                 .padding()
             }
         }
     }
 }
-    #Preview {
-        ContentView()
-    }
+#Preview {
+    WelcomeView()
+}
 
