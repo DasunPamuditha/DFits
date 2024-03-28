@@ -6,26 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct ItemDataModel: Identifiable, Hashable {
-    let id: UUID
-    var imageName: String
-    var price: Double
-    var name: String
-
-    init(imageName: String, price: Double, name: String) {
-        self.id = UUID()
-        self.imageName = imageName
-        self.price = price
-        self.name = name
-    }
+struct ItemDataModel : Hashable{
+    //popular clothing data
+    var clothID = UUID().uuidString
+    var imageName : String
+    var price : Double
+    var name : String
 }
 
-// Sample data for testing
-let sampleItemData = [
-    ItemDataModel(imageName: "item1", price: 10.00, name: "T-Shirt"),
-    ItemDataModel(imageName: "item1", price: 20.45, name: "Shorts"),
-    ItemDataModel(imageName: "item1", price: 30.70, name: "Trousers"),
-    ItemDataModel(imageName: "item1", price: 40.90, name: "Frock"),
-    ItemDataModel(imageName: "item1", price: 60.30, name: "Denim")
-]
+//Image(systemName: "square.and.pencil.circle.fill")
+var sampleItemData = [ItemDataModel(imageName: "item1", price: 10.00, name: "test1"),
+                          ItemDataModel(imageName: "item1", price: 20.45, name: "test2"),
+                          ItemDataModel(imageName: "item1", price: 30.7, name: "test3"),
+                          ItemDataModel(imageName: "item1", price: 40.9, name: "test4"),
+                          ItemDataModel(imageName: "item1", price: 60.3, name: "test5")]

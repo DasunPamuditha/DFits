@@ -36,6 +36,7 @@
 		428C6BD62BB09E0800E655AB /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BD52BB09E0800E655AB /* UserInputView.swift */; };
 		428C6BE62BB14E4B00E655AB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BE52BB14E4B00E655AB /* SignUpView.swift */; };
 		428C6BE82BB1B9D000E655AB /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BE72BB1B9D000E655AB /* FavouriteViewModel.swift */; };
+		428C6BF42BB4C11600E655AB /* FavouriteItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BF32BB4C11600E655AB /* FavouriteItemCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		428C6BD52BB09E0800E655AB /* UserInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputView.swift; sourceTree = "<group>"; };
 		428C6BE52BB14E4B00E655AB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		428C6BE72BB1B9D000E655AB /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
+		428C6BF32BB4C11600E655AB /* FavouriteItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteItemCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				428C6BD12BB09DDB00E655AB /* CartButton.swift */,
 				428C6BD32BB09DF200E655AB /* ClothingCard.swift */,
 				428C6BD52BB09E0800E655AB /* UserInputView.swift */,
+				428C6BF32BB4C11600E655AB /* FavouriteItemCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				428C6BD42BB09DF200E655AB /* ClothingCard.swift in Sources */,
 				428C6BBA2BB09D0600E655AB /* CartView.swift in Sources */,
 				428C6BC02BB09D4C00E655AB /* DashboardView.swift in Sources */,
+				428C6BF42BB4C11600E655AB /* FavouriteItemCard.swift in Sources */,
 				428C6BC82BB09D9600E655AB /* HomeViewModel.swift in Sources */,
 				428C6BD02BB09DD000E655AB /* CartItemCard.swift in Sources */,
 				428C6BE62BB14E4B00E655AB /* SignUpView.swift in Sources */,

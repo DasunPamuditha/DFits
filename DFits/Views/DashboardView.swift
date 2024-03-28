@@ -8,48 +8,40 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @ObservedObject var cartViewModel = CartViewModel()
+
     var body: some View {
-        NavigationStack{
-                
-                ZStack {
-                    Color.color
-                        .ignoresSafeArea()
-                    Circle()
-                        .scale(1.7)
-                        .foregroundColor(.white.opacity(0.15))
-                    Circle()
-                        .scale(1.35)
-                        .foregroundColor(.white.opacity(0.6))
-                    
-                    TabView{
-                        HomeView()
-                            .tabItem {
-                                Label("Home",systemImage: "house")
-                            }
-                        FavouriteView()
-                            .tabItem {
-                                Label("Favourites",systemImage: "heart")
-                            }
-                        NotificationView()
-                            .tabItem {
-                                Label("Notifications",systemImage: "bell")
-                            }
-                        UserView()
-                            .tabItem {
-                                Label("Me",systemImage: "person")
-                            }
-                        
-                        CartView()
-                            .tabItem {
-                                Label("Cart",systemImage: "cart")
-                            }
+        NavigationStack {
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
                     }
-                }
-                //.navigationBarBackButtonHidden(true)
+                FavouriteView()
+                    .environmentObject(FavouriteViewModel())
+                    .tabItem {
+                        Label("Favourites", systemImage: "heart")
+                    }
+                CartView()
+                    .environmentObject(cartViewModel)
+                    .tabItem {
+                        Label {
+                            Text("Cart")
+                        } icon: {
+                            CartButton(numberOfProducts: cartViewModel.items.count)
+                        }
+                    }
+                UserView()
+                    .tabItem {
+                        Label("Me", systemImage: "person")
+                    }
             }
         }
     }
+}
 
-#Preview {
-    DashboardView()
+struct DashboardView_Previews: PreviewProvider {
+    static var previews: some View {
+        DashboardView()
+    }
 }

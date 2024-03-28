@@ -13,12 +13,6 @@ struct CartView: View {
         ZStack{
             NavigationStack{
                 
-                ZStack {
-                    Color.color
-                        .ignoresSafeArea()
-                    Circle()
-                        .scale(1.8)
-                        .foregroundColor(.white.opacity(0.15))
                     
                     VStack(spacing: 20){
                         //HStack{//Menu Name
@@ -28,7 +22,7 @@ struct CartView: View {
                         
                         VStack{
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 370,height: 500)
+                                .frame(width: 390,height: 500)
                                 .foregroundColor(.color.opacity(0.15))
                                 .overlay{
                                     //ScrollView{
@@ -48,7 +42,7 @@ struct CartView: View {
                                                         })
                                                 }
                                             } else {
-                                                Text("Your Cart is Empty, Continue shopping.")
+                                                Text("Your Cart is Empty")
                                             }
                                         }
                                         .padding()
@@ -135,7 +129,6 @@ struct CartView: View {
             }
         }
     }
-}
 #Preview {
     CartView()
         .environmentObject(CartViewModel())

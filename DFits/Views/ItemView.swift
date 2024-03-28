@@ -10,101 +10,98 @@ import SwiftUI
 struct ItemView: View {
     
     @StateObject var itemVM : ItemViewModel = ItemViewModel()
+    @State private var getSelection:Int = 0
     
     var body: some View {
-        
-        //var searchText: String="null"
         ZStack{
-            VStack(spacing: 20){
-                HStack{//Navigator Item
-                    RoundedRectangle(cornerRadius: 0)
-                        .frame(width: 330,height: 40)
-                        .padding(.horizontal,10)
-                        .opacity(0)
-                        .overlay{
-                            HStack{
-                                HStack{
-                                    VStack{
-                                        Text("\(itemVM.searchCategory) items").bold()
-                                    }
-                                }
-                                Spacer()
-                                HStack{
-                                    Image(systemName: "cart")
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            .padding(.horizontal)
-                        }
+            VStack{
+                Spacer()
+                Image("item1")
+                    .resizable()
+                    .cornerRadius(35)
+                    .frame(width: 350,height: 400)
+                    .scaledToFit()
+                Spacer()
+                VStack{
+                    HStack{
+                        Text("Long Sleve 16 1/2")
+                        Spacer()
+                        Text("$ 54.00")
+                    }
+                    .padding(30)
                 }
-                
-                HStack{//Item Search bar
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(height:40)
-                        .padding(.horizontal,10)
-                        .foregroundColor(Color("DefaultRectangleBg"))
-                        .overlay{
-                            HStack{
-                                Image(systemName: "magnifyingglass")
-                                TextField("Search in all over the Items...",text: $itemVM.searchString)
-                            }.padding(.horizontal,48)
-                        }
-                }
-                
-                HStack{// Show the basic categories
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(width: 320,height: 25)
-                        .padding(.horizontal, 15 )
-                        .opacity(0)
-                        .overlay{
-                            ScrollView(.horizontal){
-                                LazyHStack{
-                                        ForEach(itemVM.categoryData,id:\.self){
-                                            category in
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .frame(width: 90,height: 30)
-                                                .foregroundColor(Color("DefaultRectangleBg"))
-                                                .overlay{
-                                                    Text(category.categoryName)
-                                                }
-                                        }
-                                }
+                //Spacer()
+                VStack{
+                    HStack{
+                        Circle()
+                            .frame(width: 40)
+                            .foregroundColor(getSelection != 0 ? Color.gray : Color.black)
+                            .overlay{
+                                Button(action: {
+                                    getSelection = 0
+                                }, label: {
+                                    Text("S")
+                                })
+                                .tint(.white)
+                                
                             }
-                        }
-                        .padding(.horizontal,10)
-                    
-                }
-                .padding(.horizontal,5)
-                
-                ScrollView{// Show Popular items over here
-                    VStack{
-                        ForEach(itemVM.itemData,id:\.self){
-                            cloth in
-                            VStack{
-                                HStack(spacing: 90){
-                                    ClothingCard(itemDM: cloth)
-                                    ClothingCard(itemDM: cloth)
-                                }
+                        Circle()
+                            .frame(width: 40)
+                            .foregroundColor(getSelection != 1 ? Color.gray : Color.black)
+                            .overlay{
+                                Button(action: {
+                                    getSelection = 1
+                                }, label: {
+                                    Text("M")
+                                })
+                                .tint(.white)
+                                
                             }
-                        }
+                        Circle()
+                            .frame(width: 40)
+                            .foregroundColor(getSelection != 2 ? Color.gray : Color.black)
+                            .overlay{
+                                Button(action: {
+                                    getSelection = 2
+                                }, label: {
+                                    Text("L")
+                                })
+                                .tint(.white)
+                                
+                            }
+                        Circle()
+                            .frame(width: 40)
+                            .foregroundColor(getSelection != 3 ? Color.gray : Color.black)
+                            .overlay{
+                                Button(action: {
+                                    getSelection = 3
+                                }, label: {
+                                    Text("XL")
+                                })
+                                .tint(.white)
+                                
+                            }
                     }
                 }
-                
-                
-                HStack(spacing: 80){//Navigator
-                    Image(systemName: "house.fill")
-                    Image(systemName: "heart")
-                    Image(systemName: "bell")
-                    Image(systemName: "person")
-                }
-                
                 Spacer()
-                
+                Button{
+                    print("adding to cart")
+                } label: {
+                    HStack{
+                        Text("Add to Cart")
+                            .foregroundStyle(.white).bold()
+                            
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: UIScreen.main.bounds.width - 32,height:48)
+                }
+                .background(Color(.systemBlue))
+                .cornerRadius(50)
+                //Spacer()
             }
-            .padding(.top)
-            .preferredColorScheme(.light)
-            .navigationBarBackButtonHidden(true)
+            
         }
+        //.ignoresSafeArea()
     }
 }
 #Preview {

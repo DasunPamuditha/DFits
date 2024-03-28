@@ -13,4 +13,6 @@ class ItemViewModel : ObservableObject {
     @Published var categoryData = sampleCategoryData
     @Published var searchString : String = ""
     @Published var searchCategory : String = "All"
+
 }
+

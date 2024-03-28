@@ -8,47 +8,29 @@
 import SwiftUI
 
 struct FavouriteView: View {
+    
+    @EnvironmentObject var favVM : FavouriteViewModel
+    
     var body: some View {
-        ZStack{
-            NavigationView{
-                
-                ZStack {
-                    Color.color
-                        .ignoresSafeArea()
-                    Circle()
-                        .scale(1.7)
-                        .foregroundColor(.white.opacity(0.15))
-                    
-                    VStack(spacing: 20){
-                        Text("Your Favourites")
-                            .bold()
-                        
-                        
-                        ScrollView{//Favourite Display
-                            Text("No Favourites")
-                            //                        LazyVGrid(columns: colomns, spacing: 20){
-                            //                            ForEach(itemVM.itemData,id:\.self){
-                            //                                cloth in
-                            //                                //ClothingCard(itemDM.imageName :itemDM.imageName,name :itemDM.name,price:itemDM.price)
-                            //                                ClothingCard(itemDM: cloth)
-                            //                                    .environmentObject(cartVM)
-                            //                            }
-                            //                        }
-                        }
-                        
-                        
-                    }
-                    .padding(.top)
-                    .preferredColorScheme(.light)
-                    .frame(alignment: .bottom)
-                    
-                }
-                .navigationBarBackButtonHidden(true)
-            }
             
+            List{
+                if favVM.items.count > 0 {
+                    ForEach(favVM.items,id:\.self){
+                        data in
+                        FavouriteItemCard(itemDM: data)
+                    }
+                } else {
+                    Text("Your Favourites is Empty")
+                }
+                
+            }
+            .frame(width: 370,height: 500)
+            .background(Color.color)
         }
+        
     }
-}
+
 #Preview {
     FavouriteView()
+        .environmentObject(FavouriteViewModel())
 }

@@ -10,49 +10,66 @@ import SwiftUI
 
 struct ClothingCard : View {
     @EnvironmentObject var cartVM : CartViewModel
+    @EnvironmentObject var favVM : FavouriteViewModel
+    @State private var refresh = false
     
     var itemDM: ItemDataModel
-    
-//    var imageName: String
-//    var name : String
-//    var price : Double
     
     var body: some View{
         ZStack(alignment: .topTrailing){
             ZStack(alignment: .bottom){
                 Image(itemDM.imageName)
                     .resizable()
-                    .cornerRadius(10)
+                    .cornerRadius(20)
                     .frame(width: 150,height: 180)
                     .scaledToFit()
-                VStack(alignment: .leading){
-                    Text(itemDM.name)
-                        .bold()
-                    Text("\(itemDM.price, specifier: "%.2f") $")
-                        .font(.caption)
-                                  
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(itemDM.name)
+                            .bold()
+                        Text("\(itemDM.price, specifier: "%.2f") $")
+                            .font(.caption)
+                    }
+                    Spacer()
+                    Button{
+                        favVM.addToFavourite(item: itemDM)
+                    } label: {
+                        Image(systemName: "heart.fill")
+                            .imageScale(.large)
+                            .foregroundColor(.red)
+                    }
+                    
                 }
                 .padding()
                 .frame(width: 150, alignment: .leading)
                 .background(.ultraThinMaterial)
                 .cornerRadius(20)
-                .foregroundColor(.color.opacity(0.5)) 
             }
-            .frame(width:100,height: 180)
-            .shadow(radius: 3)
+            //.frame(width:100,height: 180)
+            .shadow(radius: 7)
             
-            Button{
+            Button(action: {
                 cartVM.addToCart(item: itemDM)
-            } label: {
-                Image(systemName: "cart")
-                    .padding(1)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .cornerRadius(50)
-                    .padding(.horizontal,5)
-                    //.padding()
-            }
+            }, label: {
+                Circle()
+                    .frame(width: 38)
+                    .foregroundColor(.gray)
+                    .shadow(radius: 15)
+                    .overlay{
+                        Image(systemName: "eye")
+                            //.padding(1)
+                            .foregroundColor(.black)
+                        //.background(.gray)
+                            .cornerRadius(50)
+                            .imageScale(.medium)
+                            .padding()
+                    }
+                
+            })
         }
     }
 }
 
+#Preview{
+    ClothingCard(itemDM : sampleItemData[0])
+}
