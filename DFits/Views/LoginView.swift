@@ -19,14 +19,13 @@ struct LoginView: View {
         NavigationView {
             
             ZStack {
-                Color.color
-                    .ignoresSafeArea()
-                Circle()
-                    .scale(1.7)
-                    .foregroundColor(.white.opacity(0.15))
-                Circle()
-                    .scale(1.35)
-                    .foregroundColor(.white.opacity(0.6))
+                
+                Image("item2")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .frame(width:393 ,height:852,alignment: .center)
+                    .opacity(0.2)
 
                 VStack {
                     Text("Login to D'Fits")
@@ -37,7 +36,7 @@ struct LoginView: View {
                     TextField("Username", text: $username)
                         .padding()
                         .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
+                        .background(Color.black.opacity(0.1))
                         .cornerRadius(10)
                         .border(.red, width: CGFloat(wrongUsername))
                         
@@ -45,7 +44,7 @@ struct LoginView: View {
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
+                        .background(Color.black.opacity(0.1))
                         .cornerRadius(10)
                         .border(.red, width: CGFloat(wrongPassword))
                         .padding(5)

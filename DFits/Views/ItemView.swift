@@ -15,93 +15,98 @@ struct ItemView: View {
     var body: some View {
         ZStack{
             VStack{
-                Spacer()
-                Image("item1")
-                    .resizable()
-                    .cornerRadius(35)
-                    .frame(width: 350,height: 400)
-                    .scaledToFit()
-                Spacer()
-                VStack{
-                    HStack{
-                        Text("Long Sleve 16 1/2")
-                        Spacer()
-                        Text("$ 54.00")
+                VStack(spacing: 20){
+                    //HStack{//Menu Name
+                    Text("Long Sleeve").bold()
+                    // }
+                    Spacer()
+                    Image("item2")
+                        .resizable()
+                        .cornerRadius(50)
+                        .frame(width: 350,height: 400)
+                        .scaledToFit()
+                    Spacer()
+                    VStack{
+                        HStack{
+                            Text("Long Sleve 16 1/2")
+                            Spacer()
+                            Text("$ 54.00")
+                        }
+                        .padding(30)
                     }
-                    .padding(30)
-                }
-                //Spacer()
-                VStack{
-                    HStack{
-                        Circle()
-                            .frame(width: 40)
-                            .foregroundColor(getSelection != 0 ? Color.gray : Color.black)
-                            .overlay{
-                                Button(action: {
-                                    getSelection = 0
-                                }, label: {
-                                    Text("S")
-                                })
-                                .tint(.white)
-                                
-                            }
-                        Circle()
-                            .frame(width: 40)
-                            .foregroundColor(getSelection != 1 ? Color.gray : Color.black)
-                            .overlay{
-                                Button(action: {
-                                    getSelection = 1
-                                }, label: {
-                                    Text("M")
-                                })
-                                .tint(.white)
-                                
-                            }
-                        Circle()
-                            .frame(width: 40)
-                            .foregroundColor(getSelection != 2 ? Color.gray : Color.black)
-                            .overlay{
-                                Button(action: {
-                                    getSelection = 2
-                                }, label: {
-                                    Text("L")
-                                })
-                                .tint(.white)
-                                
-                            }
-                        Circle()
-                            .frame(width: 40)
-                            .foregroundColor(getSelection != 3 ? Color.gray : Color.black)
-                            .overlay{
-                                Button(action: {
-                                    getSelection = 3
-                                }, label: {
-                                    Text("XL")
-                                })
-                                .tint(.white)
-                                
-                            }
+                    //Spacer()
+                    VStack{
+                        HStack{
+                            Circle()
+                                .frame(width: 40)
+                                .foregroundColor(getSelection != 0 ? Color.gray : Color.black)
+                                .overlay{
+                                    Button(action: {
+                                        getSelection = 0
+                                    }, label: {
+                                        Text("S")
+                                    })
+                                    .tint(.white)
+                                    
+                                }
+                            Circle()
+                                .frame(width: 40)
+                                .foregroundColor(getSelection != 1 ? Color.gray : Color.black)
+                                .overlay{
+                                    Button(action: {
+                                        getSelection = 1
+                                    }, label: {
+                                        Text("M")
+                                    })
+                                    .tint(.white)
+                                    
+                                }
+                            Circle()
+                                .frame(width: 40)
+                                .foregroundColor(getSelection != 2 ? Color.gray : Color.black)
+                                .overlay{
+                                    Button(action: {
+                                        getSelection = 2
+                                    }, label: {
+                                        Text("L")
+                                    })
+                                    .tint(.white)
+                                    
+                                }
+                            Circle()
+                                .frame(width: 40)
+                                .foregroundColor(getSelection != 3 ? Color.gray : Color.black)
+                                .overlay{
+                                    Button(action: {
+                                        getSelection = 3
+                                    }, label: {
+                                        Text("XL")
+                                    })
+                                    .tint(.white)
+                                    
+                                }
+                        }
                     }
-                }
-                Spacer()
-                Button{
-                    print("adding to cart")
-                } label: {
-                    HStack{
-                        Text("Add to Cart")
-                            .foregroundStyle(.white).bold()
+                    Spacer()
+                    Button{
+                        print("adding to cart")
+                    } label: {
+                        HStack{
+                            Text("Add to Cart")
+                                .foregroundStyle(.white).bold()
                             
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width - 32,height:48)
                     }
-                    .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width - 32,height:48)
+                    .background(Color(.systemBlue))
+                    .cornerRadius(50)
+                    //Spacer()
                 }
-                .background(Color(.systemBlue))
-                .cornerRadius(50)
-                //Spacer()
+                
             }
-            
+            //.ignoresSafeArea()
         }
-        //.ignoresSafeArea()
     }
 }
 #Preview {

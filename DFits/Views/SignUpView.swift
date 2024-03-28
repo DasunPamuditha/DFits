@@ -9,114 +9,84 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @State private var username = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-   
+    @State private var email : String = ""
+    @State private var fullName : String = ""
+    @State private var password : String = ""
+    @State private var confirmPwd : String = ""
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack{
-            
-            ZStack {
-                Color.color
-                    .ignoresSafeArea()
-                Circle()
-                    .scale(1.7)
-                    .foregroundColor(.white.opacity(0.15))
-                Circle()
-                    .scale(1.35)
-                    .foregroundColor(.white.opacity(0.6))
                 
+                //image
+                Image("item2")
+                    .resizable()
+                    .scaledToFill()
+                    .cornerRadius(85)
+                    .frame(width:100,height:50)
+                    .padding(.vertical,32)
                 
                 //form field
                 
                 VStack{
-                    VStack {
-                        Text("New to D'Fits?")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding(20)
-      
-                        
-                        TextField("Type your name here", text: $username)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.black.opacity(0.05))
-                            .cornerRadius(10)
-                        
-                        TextField("Email address", text: $email)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.black.opacity(0.05))
-                            .cornerRadius(10)
-                        
-                        TextField("Type a Password", text: $password)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.black.opacity(0.05))
-                            .cornerRadius(10)
-                            
-                        TextField("Re enter your Password", text: $password)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.black.opacity(0.05))
-                            .cornerRadius(10)
-                        
-                        
-                        
-                        
-                        Button{
-                            print("user signup")
-                        } label: {
-                            HStack{
-                                Text("REGISTER")
-                                
-                            }
-                            .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width - 32,height:48)
-                        }
-                        .background(Color(.systemBlue))
-                        .cornerRadius(50)
-                        
-                        .padding(2)
-                        
-                        Button{
-                            dismiss()
-                        } label: {
-                            HStack{
-                                HStack(spacing: 3){
-                                    Text("Already have an Account? ")
-                                    Text("Sign in")
-                                        .bold()
-                                }
-                                .font(.system(size: 15))
-                                .foregroundColor(.black)
-                            }
-                        }
-                    }
+                    UserInputView(text: $email, title: "Email Address", placeHolder: "name@example.com")
+                        .textInputAutocapitalization(.none)
                     
-                    .padding(.top,24)
+                    UserInputView(text: $fullName, title: "Full Name", placeHolder: "Full Name")
                     
+                    UserInputView(text: $password, title: "Password", placeHolder: "Password", isSecureField: true)
                     
+                    UserInputView(text: $confirmPwd, title: "Confirm Password", placeHolder: "Confirm Password", isSecureField: true)
                     
-                    //sign up button
-                    
-                    
-                    
-                    //            NavigationLink{
-                    //
-                    //            } label : {
-                    
-                    //                .font(.system(size: 14))
-                    //            }
                 }
-                .toolbar(.hidden, for: .navigationBar)
+                .padding(.horizontal)
+                .padding(.vertical)
+                
+                //sign in button
+                
+                Button{
+                    print("user signup")
+                } label: {
+                    HStack{
+                        Text("REGISTER")
+                            .foregroundStyle(.white).bold()
+                        
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: UIScreen.main.bounds.width - 32,height:48)
+                }
+                .background(Color(.systemBlue))
+                .cornerRadius(50)
+                .padding(.top,24)
+                
+                Spacer()
+                
+                //sign up button
+                
+                Button{
+                    dismiss()
+                } label: {
+                    HStack{
+                        HStack(spacing: 3){
+                            Text("Already Registered? ")
+                            Text("Log in")
+                                .bold()
+                        }
+                        .font(.system(size: 14))
+                    }
+                }
+                
+                //            NavigationLink{
+                //
+                //            } label : {
+                
+                //                .font(.system(size: 14))
+                //            }
             }
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
-}
+
 #Preview {
     SignUpView()
 }

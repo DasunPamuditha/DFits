@@ -54,11 +54,11 @@ struct ClothingCard : View {
                 Circle()
                     .frame(width: 38)
                     .foregroundColor(.gray)
-                    .shadow(radius: 15)
+                    .shadow(radius: 25)
                     .overlay{
                         Image(systemName: "eye")
                             //.padding(1)
-                            .foregroundColor(.black)
+                            .foregroundColor(.color)
                         //.background(.gray)
                             .cornerRadius(50)
                             .imageScale(.medium)

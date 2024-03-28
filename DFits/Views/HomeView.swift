@@ -27,7 +27,7 @@ struct HomeView: View {
                         
                         
                         RoundedRectangle(cornerRadius: 0)
-                            .frame(width: 330,height: 40)
+                            .frame(width: 330,height: 30)
                             .padding(.horizontal,10)
                             .opacity(0)
                             .overlay{
@@ -49,13 +49,13 @@ struct HomeView: View {
                                 }
                             }
                         
-                    }
+                    }.padding(-100)
                     
                     HStack{//Item Search bar
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(height:40)
-                            .padding(.horizontal,10)
-                            .foregroundColor(Color("DefaultRectangleBg"))
+                            .frame(height:35)
+                            .padding(.horizontal,19)
+                            .foregroundColor(Color("Color").opacity(0.3))
                             .overlay{
                                 HStack{
                                     Image(systemName: "magnifyingglass")
@@ -63,7 +63,15 @@ struct HomeView: View {
                                 }.padding(.horizontal,55)
                             }
                     }
-                    
+                    VStack
+                    {
+                        Text("Explore the Latest Arrivals on D'Fits!")
+                            .font(.custom("AmericanTypewriter", size: 17))
+                            
+                            .foregroundColor(Color("Color").opacity(50))
+                            .frame(width: 308, height: 30)
+                            .offset(y: 0)
+                    }
                     HStack{// Show the basic categories
                         RoundedRectangle(cornerRadius: 20)
                             .frame(width: 320,height: 25)
@@ -75,8 +83,8 @@ struct HomeView: View {
                                         ForEach(homeVM.categoryData,id:\.self){
                                             category in
                                             RoundedRectangle(cornerRadius: 10)
-                                                .frame(width: 90,height: 30)
-                                                .foregroundColor(Color("DefaultRectangleBg"))
+                                                .frame(width: 80,height: 30)
+                                                .foregroundColor(Color("Color").opacity(0.3))
                                                 .overlay{
                                                     Text(category.categoryName)
                                                 }
@@ -115,8 +123,6 @@ struct HomeView: View {
     
     
 }
-
-
 
 #Preview {
     HomeView()

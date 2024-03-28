@@ -98,7 +98,7 @@ struct CartView: View {
                                 
                             }
                             .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width - 32,height:48)
+                            .frame(width: UIScreen.main.bounds.width - 70,height:38)
                         }
                         .background(Color(.systemBlue))
                         .cornerRadius(50)
