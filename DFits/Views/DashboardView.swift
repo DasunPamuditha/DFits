@@ -11,9 +11,9 @@ struct DashboardView: View {
     @ObservedObject var cartViewModel = CartViewModel()
 
     var body: some View {
-        NavigationStack {
+        HStack {
             TabView {
-                HomeView()
+                HomeView()                
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }

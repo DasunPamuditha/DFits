@@ -17,17 +17,9 @@ struct SignUpView: View {
     
     var body: some View {
         NavigationStack{
+            VStack{
                 
-                //image
-                Image("item2")
-                    .resizable()
-                    .scaledToFill()
-                    .cornerRadius(85)
-                    .frame(width:100,height:50)
-                    .padding(.vertical,32)
-                
-                //form field
-                
+                Spacer()
                 VStack{
                     UserInputView(text: $email, title: "Email Address", placeHolder: "name@example.com")
                         .textInputAutocapitalization(.none)
@@ -40,7 +32,7 @@ struct SignUpView: View {
                     
                 }
                 .padding(.horizontal)
-                .padding(.vertical)
+                //                .padding(0)
                 
                 //sign in button
                 
@@ -86,7 +78,7 @@ struct SignUpView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
     }
-
+}
 #Preview {
     SignUpView()
 }

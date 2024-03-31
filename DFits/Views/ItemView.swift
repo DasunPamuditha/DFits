@@ -1,114 +1,78 @@
-//
-//  ItemView.swift
-//  DFits
-//
-//  Created by Dasun Pamuditha on 2024-03-24.
-//
-
 import SwiftUI
 
 struct ItemView: View {
     
     @StateObject var itemVM : ItemViewModel = ItemViewModel()
-    @State private var getSelection:Int = 0
+    @State private var selectedSize: String = ""
     
     var body: some View {
-        ZStack{
-            VStack{
-                VStack(spacing: 20){
-                    //HStack{//Menu Name
-                    Text("Long Sleeve").bold()
-                    // }
-                    Spacer()
-                    Image("item2")
-                        .resizable()
+        NavigationView(content: {
+            ZStack{
+                VStack{
+                    VStack(spacing: 20){
+                        // Menu Name
+                        Text("Long Sleeve").bold()
+                        Spacer()
+                        Image("item2")
+                            .resizable()
+                            .cornerRadius(20)
+                            .frame(width: 350,height: 400)
+                            .scaledToFit()
+                        Spacer()
+                        VStack{
+                            HStack{
+                                Text("Long Sleve 16 1/2")
+                                Spacer()
+                                Text("$ 54.00")
+                            }
+                            .padding(30)
+                        }
+                        
+                        // Size selection
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 15) {
+                                ForEach(["Small", "Medium", "Large", "XL", "XXL"], id: \.self) { size in
+                                    Button(action: {
+                                        selectedSize = size
+                                        print("Selected size: \(selectedSize)")
+                                    }) {
+                                        Text(size)
+                                            .font(.title)
+                                            .padding(7)
+                                            .foregroundColor(selectedSize == size ? .black : .white)
+                                            .background(selectedSize == size ? Color.gray : Color.color)
+                                            .cornerRadius(8)
+                                    }
+                                }
+                            }
+                        }
+                        .padding()
+                        
+                        Spacer()
+                        
+                        // Add to cart button
+                        Button(action: {
+                            print("adding to cart")
+                        }) {
+                            HStack{
+                                Text("Add to Cart")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                        }
+                        .background(Color.blue)
                         .cornerRadius(50)
-                        .frame(width: 350,height: 400)
-                        .scaledToFit()
-                    Spacer()
-                    VStack{
-                        HStack{
-                            Text("Long Sleve 16 1/2")
-                            Spacer()
-                            Text("$ 54.00")
-                        }
-                        .padding(30)
                     }
-                    //Spacer()
-                    VStack{
-                        HStack{
-                            Circle()
-                                .frame(width: 40)
-                                .foregroundColor(getSelection != 0 ? Color.gray : Color.black)
-                                .overlay{
-                                    Button(action: {
-                                        getSelection = 0
-                                    }, label: {
-                                        Text("S")
-                                    })
-                                    .tint(.white)
-                                    
-                                }
-                            Circle()
-                                .frame(width: 40)
-                                .foregroundColor(getSelection != 1 ? Color.gray : Color.black)
-                                .overlay{
-                                    Button(action: {
-                                        getSelection = 1
-                                    }, label: {
-                                        Text("M")
-                                    })
-                                    .tint(.white)
-                                    
-                                }
-                            Circle()
-                                .frame(width: 40)
-                                .foregroundColor(getSelection != 2 ? Color.gray : Color.black)
-                                .overlay{
-                                    Button(action: {
-                                        getSelection = 2
-                                    }, label: {
-                                        Text("L")
-                                    })
-                                    .tint(.white)
-                                    
-                                }
-                            Circle()
-                                .frame(width: 40)
-                                .foregroundColor(getSelection != 3 ? Color.gray : Color.black)
-                                .overlay{
-                                    Button(action: {
-                                        getSelection = 3
-                                    }, label: {
-                                        Text("XL")
-                                    })
-                                    .tint(.white)
-                                    
-                                }
-                        }
-                    }
-                    Spacer()
-                    Button{
-                        print("adding to cart")
-                    } label: {
-                        HStack{
-                            Text("Add to Cart")
-                                .foregroundStyle(.white).bold()
-                            
-                        }
-                        .foregroundColor(.white)
-                        .frame(width: UIScreen.main.bounds.width - 32,height:48)
-                    }
-                    .background(Color(.systemBlue))
-                    .cornerRadius(50)
-                    //Spacer()
                 }
-                
             }
-            //.ignoresSafeArea()
-        }
+            .navigationBarHidden(true)
+        })
     }
 }
-#Preview {
-    ItemView()
+
+struct ItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        ItemView()
+    }
 }

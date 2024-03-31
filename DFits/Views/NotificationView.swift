@@ -11,13 +11,6 @@ struct NotificationView: View {
     var body: some View {
         ZStack{
             NavigationView{
-                
-                ZStack {
-                    Color.color
-                        .ignoresSafeArea()
-                    Circle()
-                        .scale(1.7)
-                        .foregroundColor(.white.opacity(0.15))
                     
                     VStack(spacing: 20){
                         Text("Notifications")
@@ -47,7 +40,7 @@ struct NotificationView: View {
             }
         }
     }
-}
+
 #Preview {
     NotificationView()
 }
